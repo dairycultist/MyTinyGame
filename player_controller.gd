@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("ui_accept"):
 			velocity.y = 8
 	else:
-		velocity.y -= 20 * delta
+		velocity.y -= 30 * delta
 	
 	if direction:
 		velocity.x += direction.x * accel * delta
