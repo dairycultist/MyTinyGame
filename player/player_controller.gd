@@ -30,9 +30,9 @@ func _process(delta: float) -> void:
 		velocity = Vector3.ZERO
 	
 	# shooting and reloading and stuff
-	if can_shoot and gunshot_cooldown < 0:
+	if can_shoot:
 		
-		if Input.is_action_pressed("fire"):
+		if gunshot_cooldown < 0 and Input.is_action_pressed("fire"):
 			
 			gunshot_cooldown = 1.0 / firerate
 			
@@ -42,13 +42,12 @@ func _process(delta: float) -> void:
 				update_ammo_gui()
 			else:
 				$AudioDryfire.play()
+		else:
+			gunshot_cooldown -= delta
 		
 		if Input.is_action_just_pressed("reload") and reserve_ammo > 0 and clip_ammo < max_clip_ammo:
 			$AudioReload.play()
 			$GUIGunOverlay/GunOverlay/Camera3D/Rifle.do_reload_animation(self)
-		
-	else:
-		gunshot_cooldown -= delta
 	
 	# movement
 	var input_dir := Input.get_vector("walk_left", "walk_right", "walk_up", "walk_down")
