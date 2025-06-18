@@ -12,15 +12,22 @@ func _process(delta: float) -> void:
 	
 	var run_amount := Input.get_vector("walk_left", "walk_right", "walk_up", "walk_down").normalized().length()
 	
-	run_fac = lerp(run_fac, run_amount, delta * 20);
+	var shoot_pos_offset = Vector3.ZERO
+	var run_pos_offset = Vector3(
+		cos(Time.get_ticks_msec() * 0.01) * 0.03,
+		abs(sin(Time.get_ticks_msec() * 0.01) * 0.03),
+		0.0
+	)
+	
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		run_fac = 0.0
+		shoot_pos_offset.z = RandomNumberGenerator.new().randf_range(0.0, 0.1)
+	
+	run_fac = lerp(run_fac, run_amount, delta * 15);
 	
 	position = lerp(
-		SHOOT_POS,
-		RUN_POS + Vector3(
-			cos(Time.get_ticks_msec() * 0.01) * 0.03,
-			abs(sin(Time.get_ticks_msec() * 0.01) * 0.03),
-			0.0
-		),
+		SHOOT_POS + shoot_pos_offset,
+		RUN_POS + run_pos_offset,
 		run_fac
 	)
 	rotation = lerp(SHOOT_ROT, RUN_ROT, run_fac)
