@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bv5mxjlkjka5v"]
+[gd_scene load_steps=11 format=3 uid="uid://bv5mxjlkjka5v"]
 
 [ext_resource type="Script" uid="uid://dviwqlr1dron" path="res://player_controller.gd" id="1_fj7yv"]
 [ext_resource type="ArrayMesh" uid="uid://ctcotpe6cih6u" path="res://rifle.obj" id="2_aqk2v"]
 [ext_resource type="ArrayMesh" uid="uid://ba6s25wymtm30" path="res://arena/arena.obj" id="2_fj7yv"]
 [ext_resource type="Material" uid="uid://cie6t88ijg23m" path="res://arena/debug.tres" id="3_aqk2v"]
 [ext_resource type="Shader" uid="uid://bu0cy2qpwrka2" path="res://shaders/material.gdshader" id="3_tlwt5"]
+[ext_resource type="Script" uid="uid://bdrdadre31akg" path="res://rifle_animator.gd" id="6_dwbse"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gv5m4"]
 
@@ -68,8 +69,9 @@ size = Vector2i(1152, 648)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
 [node name="Rifle" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Camera3D"]
-transform = Transform3D(-0.0994151, 0.000941277, 0.0107588, 0, 0.0996195, -0.00871557, -0.0107999, -0.0086646, -0.0990368, 0.652, -0.44, -1.736)
+transform = Transform3D(-0.0507616, -0.0462868, -0.0726691, -0.0372851, 0.0878383, -0.0299041, 0.0776729, 0.011915, -0.0618462, -0.638, -0.63, -1.206)
 mesh = ExtResource("2_aqk2v")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_036b0")
 surface_material_override/1 = SubResource("ShaderMaterial_dwbse")
+script = ExtResource("6_dwbse")
