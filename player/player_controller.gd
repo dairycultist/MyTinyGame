@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 				clip_ammo -= 1
 				$GUIBottomRight/AmmoText.text = str(clip_ammo, " | ", reserve_ammo)
 			else:
-				pass
+				$AudioDryfire.play()
 		
 	else:
 		gunshot_cooldown -= delta
