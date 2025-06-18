@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	
 	run_fac = lerp(run_fac, run_amount, delta * 15);
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if Input.is_action_pressed("fire"):
 		run_fac = 0.0
 		shoot_pos_offset.z = RandomNumberGenerator.new().randf_range(0.0, 0.1)
 	

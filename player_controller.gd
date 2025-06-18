@@ -25,11 +25,16 @@ func _process(delta: float) -> void:
 	
 	if gunshot_cooldown < 0:
 		
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			$AudioGunshot.play()
+		if Input.is_action_pressed("fire"):
+			
 			gunshot_cooldown = 1.0 / firerate
-			clip_ammo -= 1
-			$GUIBottomRight/AmmoText.text = str(clip_ammo, " | ", reserve_ammo)
+			
+			if clip_ammo > 0:
+				$AudioGunshot.play()
+				clip_ammo -= 1
+				$GUIBottomRight/AmmoText.text = str(clip_ammo, " | ", reserve_ammo)
+			else:
+				pass
 		
 	else:
 		gunshot_cooldown -= delta
@@ -39,7 +44,7 @@ func _process(delta: float) -> void:
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if is_on_floor():
-		if Input.is_action_pressed("ui_accept"):
+		if Input.is_action_pressed("jump"):
 			velocity.y = 8
 	else:
 		velocity.y -= 30 * delta
