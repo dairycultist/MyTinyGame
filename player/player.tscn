@@ -49,7 +49,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
 [node name="Rifle" type="MeshInstance3D" parent="GUIGunOverlay/GunOverlay/Camera3D"]
-transform = Transform3D(-0.0507616, -0.0462868, -0.0726691, -0.0372851, 0.0878383, -0.0299041, 0.0776729, 0.011915, -0.0618462, -0.638, -0.63, -1.206)
+transform = Transform3D(-0.0994151, 0.000941277, 0.0107588, 0, 0.0996195, -0.00871558, -0.0107999, -0.0086646, -0.0990368, 0.65, -0.44, -1.74)
 mesh = ExtResource("2_1jxqw")
 surface_material_override/0 = SubResource("ShaderMaterial_boad6")
 surface_material_override/1 = SubResource("ShaderMaterial_rgyib")
