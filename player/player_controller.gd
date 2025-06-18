@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 @export var mouse_sensitivity := 0.3
+
+@export_group("Movement")
 @export var drag := 8
 @export var accel := 50
 
@@ -9,9 +11,13 @@ extends CharacterBody3D
 @export var max_clip_ammo := 50
 @export var max_reserve_ammo := 200
 
-var gunshot_cooldown = 0.0
-var clip_ammo = max_clip_ammo
-var reserve_ammo = max_reserve_ammo
+@onready var ammo_text = $GUIBottomRight/AmmoText
+
+var gunshot_cooldown := 0.0
+var clip_ammo := max_clip_ammo
+var reserve_ammo := max_reserve_ammo
+
+var can_shoot := true
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -23,7 +29,8 @@ func _process(delta: float) -> void:
 		position = Vector3.ZERO
 		velocity = Vector3.ZERO
 	
-	if gunshot_cooldown < 0:
+	# shooting and reloading and stuff
+	if can_shoot and gunshot_cooldown < 0:
 		
 		if Input.is_action_pressed("fire"):
 			
@@ -32,9 +39,12 @@ func _process(delta: float) -> void:
 			if clip_ammo > 0:
 				$AudioGunshot.play()
 				clip_ammo -= 1
-				$GUIBottomRight/AmmoText.text = str(clip_ammo, " | ", reserve_ammo)
+				update_ammo_gui()
 			else:
 				$AudioDryfire.play()
+		
+		if Input.is_action_just_pressed("reload") and reserve_ammo > 0:
+			$GUIGunOverlay/GunOverlay/Camera3D/Rifle.do_reload_animation(self)
 		
 	else:
 		gunshot_cooldown -= delta
@@ -57,6 +67,10 @@ func _process(delta: float) -> void:
 	velocity.z = lerp(velocity.z, 0.0, delta * drag)
 	
 	move_and_slide()
+
+func update_ammo_gui():
+	
+	ammo_text.text = str(clip_ammo, " | ", reserve_ammo)
 
 func _input(event):
 	
