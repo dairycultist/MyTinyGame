@@ -19,11 +19,11 @@ func _process(delta: float) -> void:
 		0.0
 	)
 	
+	run_fac = lerp(run_fac, run_amount, delta * 15);
+	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		run_fac = 0.0
 		shoot_pos_offset.z = RandomNumberGenerator.new().randf_range(0.0, 0.1)
-	
-	run_fac = lerp(run_fac, run_amount, delta * 15);
 	
 	position = lerp(
 		SHOOT_POS + shoot_pos_offset,

@@ -4,6 +4,13 @@ extends CharacterBody3D
 @export var drag := 8
 @export var accel := 50
 
+@export_group("Gun")
+@export var firerate := 12
+@export var max_clip_ammo := 50
+@export var max_reserve_ammo := 200
+
+var gunshotCooldown = 0.0
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -13,6 +20,15 @@ func _process(delta: float) -> void:
 	if (position.y < -1):
 		position = Vector3.ZERO
 		velocity = Vector3.ZERO
+	
+	if gunshotCooldown < 0:
+		
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			$AudioGunshot.play()
+			gunshotCooldown = 1.0 / firerate
+		
+	else:
+		gunshotCooldown -= delta
 	
 	# movement
 	var input_dir := Input.get_vector("walk_left", "walk_right", "walk_up", "walk_down")
