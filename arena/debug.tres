@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cie6t88ijg23m"]
+
+[ext_resource type="Shader" uid="uid://bu0cy2qpwrka2" path="res://shaders/material.gdshader" id="1_ig8kd"]
+[ext_resource type="Texture2D" uid="uid://d3bcljs38divr" path="res://arena/debug.png" id="2_s7a7q"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ig8kd")
+shader_parameter/tex = ExtResource("2_s7a7q")
+shader_parameter/uv_scale = 20.0
