@@ -46,6 +46,8 @@ func do_reload_animation(player: Node3D):
 
 func reload_animation(player: Node3D):
 	
+	OS.delay_msec(1000)
+	
 	player.can_shoot = true
 	
 	if player.reserve_ammo >= player.max_clip_ammo - player.clip_ammo:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2gkcd0ajcobs"]
+[gd_scene load_steps=13 format=3 uid="uid://b2gkcd0ajcobs"]
 
 [ext_resource type="Script" uid="uid://dviwqlr1dron" path="res://player/player_controller.gd" id="1_2hs0m"]
 [ext_resource type="ArrayMesh" uid="uid://ctcotpe6cih6u" path="res://player/rifle.obj" id="2_1jxqw"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bjd3ycx544pvl" path="res://player/dryfire.wav" id="5_g6k8r"]
 [ext_resource type="AudioStream" uid="uid://dyf71o0e2k60a" path="res://player/gunshot.wav" id="5_n7ghd"]
 [ext_resource type="Theme" uid="uid://cp2y1w0do1rye" path="res://player/gui_theme.tres" id="6_nvl01"]
+[ext_resource type="AudioStream" uid="uid://bfcrvdnrb1m4c" path="res://player/reload.wav" id="7_rgyib"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_boad6"]
 render_priority = 0
@@ -67,6 +68,11 @@ stream = ExtResource("5_n7ghd")
 
 [node name="AudioDryfire" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_g6k8r")
+
+[node name="AudioReload" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_rgyib")
+volume_db = 80.0
+max_db = 6.0
 
 [node name="GUITopLeft" type="Control" parent="."]
 layout_mode = 3

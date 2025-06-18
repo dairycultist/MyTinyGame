@@ -43,7 +43,8 @@ func _process(delta: float) -> void:
 			else:
 				$AudioDryfire.play()
 		
-		if Input.is_action_just_pressed("reload") and reserve_ammo > 0:
+		if Input.is_action_just_pressed("reload") and reserve_ammo > 0 and clip_ammo < max_clip_ammo:
+			$AudioReload.play()
 			$GUIGunOverlay/GunOverlay/Camera3D/Rifle.do_reload_animation(self)
 		
 	else:
