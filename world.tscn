@@ -31,8 +31,6 @@ mesh = ExtResource("2_fj7yv")
 surface_material_override/0 = ExtResource("3_aqk2v")
 surface_material_override/1 = ExtResource("3_aqk2v")
 surface_material_override/2 = ExtResource("3_aqk2v")
-surface_material_override/3 = ExtResource("3_aqk2v")
-surface_material_override/4 = ExtResource("3_aqk2v")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.744463, -0.524407, 0.413246, 0, 0.618943, 0.785436, -0.667664, -0.584728, 0.46078, 0, 0, 0)

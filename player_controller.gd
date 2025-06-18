@@ -18,12 +18,18 @@ func _process(delta: float) -> void:
 	var input_dir := Input.get_vector("walk_left", "walk_right", "walk_up", "walk_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
+	if is_on_floor():
+		if Input.is_action_pressed("ui_accept"):
+			velocity.y = 8
+	else:
+		velocity.y -= 20 * delta
+	
 	if direction:
 		velocity.x += direction.x * accel * delta
 		velocity.z += direction.z * accel * delta
 	
-	velocity += get_gravity() * 2.5 * delta
-	velocity = lerp(velocity, Vector3.ZERO, delta * drag)
+	velocity.x = lerp(velocity.x, 0.0, delta * drag)
+	velocity.z = lerp(velocity.z, 0.0, delta * drag)
 	
 	move_and_slide()
 
