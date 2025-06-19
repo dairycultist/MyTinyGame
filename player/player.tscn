@@ -1,13 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2gkcd0ajcobs"]
+[gd_scene load_steps=18 format=3 uid="uid://b2gkcd0ajcobs"]
 
 [ext_resource type="Script" uid="uid://dviwqlr1dron" path="res://player/player_controller.gd" id="1_2hs0m"]
 [ext_resource type="ArrayMesh" uid="uid://ctcotpe6cih6u" path="res://player/rifle.obj" id="2_1jxqw"]
 [ext_resource type="Shader" uid="uid://bu0cy2qpwrka2" path="res://shaders/material.gdshader" id="3_dw050"]
 [ext_resource type="Script" uid="uid://bdrdadre31akg" path="res://player/rifle_animator.gd" id="4_b26j0"]
+[ext_resource type="Shader" uid="uid://bjxnn8ui5rmqx" path="res://shaders/unlit.gdshader" id="5_8t03j"]
 [ext_resource type="AudioStream" uid="uid://bjd3ycx544pvl" path="res://player/dryfire.wav" id="5_g6k8r"]
 [ext_resource type="AudioStream" uid="uid://dyf71o0e2k60a" path="res://player/gunshot.wav" id="5_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://bxojs3i1713u0" path="res://player/muzzle_flash.png" id="6_2ieo8"]
 [ext_resource type="Theme" uid="uid://cp2y1w0do1rye" path="res://player/gui_theme.tres" id="6_nvl01"]
 [ext_resource type="AudioStream" uid="uid://bfcrvdnrb1m4c" path="res://player/reload.wav" id="7_rgyib"]
+[ext_resource type="Texture2D" uid="uid://o7fyxchiywpq" path="res://player/crosshair.png" id="9_hg6s5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_boad6"]
 render_priority = 0
@@ -20,6 +23,16 @@ render_priority = 0
 shader = ExtResource("3_dw050")
 shader_parameter/color = Color(0.257607, 0.531815, 0.663661, 1)
 shader_parameter/uv_scale = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_2ieo8"]
+flip_faces = true
+size = Vector2(10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebec5"]
+render_priority = 0
+shader = ExtResource("5_8t03j")
+shader_parameter/tex = ExtResource("6_2ieo8")
+shader_parameter/cutoff = 0.488
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gv5m4"]
 
@@ -55,6 +68,11 @@ surface_material_override/0 = SubResource("ShaderMaterial_boad6")
 surface_material_override/1 = SubResource("ShaderMaterial_rgyib")
 script = ExtResource("4_b26j0")
 
+[node name="MuzzleFlare" type="MeshInstance3D" parent="GUIGunOverlay/GunOverlay/Camera3D/Rifle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58794e-08, -2.6077e-08, 2.60315)
+mesh = SubResource("QuadMesh_2ieo8")
+surface_material_override/0 = SubResource("ShaderMaterial_ebec5")
+
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_gv5m4")
@@ -72,18 +90,11 @@ stream = ExtResource("5_g6k8r")
 [node name="AudioReload" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_rgyib")
 
-[node name="GUITopLeft" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 50.0
-
-[node name="ObjectiveText" type="RichTextLabel" parent="GUITopLeft"]
-layout_mode = 0
-offset_right = 1059.0
-offset_bottom = 409.0
+[node name="ObjectiveText" type="RichTextLabel" parent="."]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 797.0
+offset_bottom = 201.0
 theme = ExtResource("6_nvl01")
 theme_override_fonts/bold_font = SubResource("SystemFont_pkg7o")
 bbcode_enabled = true
@@ -92,57 +103,53 @@ Defeat all enemies (3/50)"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="GUIBottomRight" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -50.0
-offset_right = -10.0
-offset_bottom = -10.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="AmmoText" type="RichTextLabel" parent="GUIBottomRight"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -831.0
-offset_top = -103.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="AmmoText" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -35.0
+offset_right = 366.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("6_nvl01")
+theme_override_colors/default_color = Color(1, 1, 1, 0.627451)
 text = "50 | 200"
 scroll_active = false
-horizontal_alignment = 2
-vertical_alignment = 2
+vertical_alignment = 1
 
-[node name="GUIBottomLeft" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = -10.0
-grow_vertical = 0
-
-[node name="HealthText" type="RichTextLabel" parent="GUIBottomLeft"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -106.0
-offset_right = 185.0
-grow_vertical = 0
+[node name="HealthText" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -35.0
+offset_right = -100.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("6_nvl01")
+theme_override_colors/default_color = Color(1, 1, 1, 0.627451)
 text = "100"
 scroll_active = false
-vertical_alignment = 2
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_hg6s5")

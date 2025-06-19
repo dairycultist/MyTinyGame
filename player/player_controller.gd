@@ -11,7 +11,7 @@ extends CharacterBody3D
 @export var max_clip_ammo := 50
 @export var max_reserve_ammo := 200
 
-@onready var ammo_text = $GUIBottomRight/AmmoText
+@onready var ammo_text = $AmmoText
 
 var gunshot_cooldown := 0.0
 var clip_ammo := max_clip_ammo

@@ -17,6 +17,9 @@ var reloading := false
 
 func _process(delta: float) -> void:
 	
+	position = lerp(position, target_pos, delta * 15);
+	rotation = lerp(rotation, target_rot, delta * 15);
+	
 	if not reloading:
 		
 		var run_amount := Input.get_vector("walk_left", "walk_right", "walk_up", "walk_down").normalized().length()
@@ -34,12 +37,18 @@ func _process(delta: float) -> void:
 			target_rot = SHOOT_ROT
 		
 		if Input.is_action_pressed("fire"):
+			
+			var random = RandomNumberGenerator.new()
+			var flare_scale = random.randf_range(0.8, 1.0)
+			
+			$MuzzleFlare.visible = true
+			$MuzzleFlare.rotation.z = random.randf_range(0.0, 0.3)
+			$MuzzleFlare.scale = Vector3(flare_scale, flare_scale, flare_scale)
 			position = SHOOT_POS
 			rotation = SHOOT_ROT
-			position.z += RandomNumberGenerator.new().randf_range(0.0, 0.1)
-	
-	position = lerp(position, target_pos, delta * 15);
-	rotation = lerp(rotation, target_rot, delta * 15);
+			position.z += random.randf_range(0.0, 0.1)
+		else:
+			$MuzzleFlare.visible = false
 
 func do_reload_animation(player: Node3D):
 	
