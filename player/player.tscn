@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2gkcd0ajcobs"]
+[gd_scene load_steps=17 format=3 uid="uid://b2gkcd0ajcobs"]
 
 [ext_resource type="Script" uid="uid://dviwqlr1dron" path="res://player/player_controller.gd" id="1_2hs0m"]
 [ext_resource type="ArrayMesh" uid="uid://ctcotpe6cih6u" path="res://player/rifle.obj" id="2_1jxqw"]
 [ext_resource type="Shader" uid="uid://bu0cy2qpwrka2" path="res://shaders/material.gdshader" id="3_dw050"]
-[ext_resource type="Script" uid="uid://bdrdadre31akg" path="res://player/rifle_animator.gd" id="4_b26j0"]
 [ext_resource type="Shader" uid="uid://bjxnn8ui5rmqx" path="res://shaders/unlit.gdshader" id="5_8t03j"]
 [ext_resource type="AudioStream" uid="uid://bjd3ycx544pvl" path="res://player/dryfire.wav" id="5_g6k8r"]
 [ext_resource type="AudioStream" uid="uid://dyf71o0e2k60a" path="res://player/gunshot.wav" id="5_n7ghd"]
@@ -66,10 +65,10 @@ transform = Transform3D(-0.0994151, 0.000941277, 0.0107588, 0, 0.0996195, -0.008
 mesh = ExtResource("2_1jxqw")
 surface_material_override/0 = SubResource("ShaderMaterial_boad6")
 surface_material_override/1 = SubResource("ShaderMaterial_rgyib")
-script = ExtResource("4_b26j0")
 
 [node name="MuzzleFlare" type="MeshInstance3D" parent="GUIGunOverlay/GunOverlay/Camera3D/Rifle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58794e-08, -2.6077e-08, 2.60315)
+visible = false
 mesh = SubResource("QuadMesh_2ieo8")
 surface_material_override/0 = SubResource("ShaderMaterial_ebec5")
 
