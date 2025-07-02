@@ -11,16 +11,16 @@
 [ext_resource type="AudioStream" uid="uid://bfcrvdnrb1m4c" path="res://player/reload.wav" id="7_rgyib"]
 [ext_resource type="Texture2D" uid="uid://o7fyxchiywpq" path="res://player/crosshair.png" id="9_hg6s5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_boad6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8t03j"]
 render_priority = 0
 shader = ExtResource("3_dw050")
-shader_parameter/color = Color(0.124703, 0.115967, 0.137801, 1)
+shader_parameter/color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 shader_parameter/uv_scale = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rgyib"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ieo8"]
 render_priority = 0
 shader = ExtResource("3_dw050")
-shader_parameter/color = Color(0.257607, 0.531815, 0.663661, 1)
+shader_parameter/color = Color(0.367503, 0.367573, 0.588125, 1)
 shader_parameter/uv_scale = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ieo8"]
@@ -63,11 +63,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 [node name="Rifle" type="MeshInstance3D" parent="GUIGunOverlay/GunOverlay/Camera3D"]
 transform = Transform3D(-0.0994151, 0.000941277, 0.0107588, 0, 0.0996195, -0.00871558, -0.0107999, -0.0086646, -0.0990368, 0.65, -0.44, -1.74)
 mesh = ExtResource("2_1jxqw")
-surface_material_override/0 = SubResource("ShaderMaterial_boad6")
-surface_material_override/1 = SubResource("ShaderMaterial_rgyib")
+surface_material_override/0 = SubResource("ShaderMaterial_8t03j")
+surface_material_override/1 = SubResource("ShaderMaterial_2ieo8")
 
 [node name="MuzzleFlare" type="MeshInstance3D" parent="GUIGunOverlay/GunOverlay/Camera3D/Rifle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58794e-08, -2.6077e-08, 2.60315)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66361e-08, 1.57691, 4.08591)
 visible = false
 mesh = SubResource("QuadMesh_2ieo8")
 surface_material_override/0 = SubResource("ShaderMaterial_ebec5")

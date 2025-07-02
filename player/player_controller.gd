@@ -16,13 +16,13 @@ extends CharacterBody3D
 
 # Rifle animation/state machine
 #
-const SHOOT_POS := Vector3(0.65, -0.44, -1.74)
+const SHOOT_POS := Vector3(0.65, -0.44, -0.74)
 const SHOOT_ROT := Vector3(deg_to_rad(5.0), deg_to_rad(173.8), 0.0)
 
-const RUN_POS := Vector3(-0.64, -0.63, -1.21)
+const RUN_POS := Vector3(-0.64, -0.63, -0.21)
 const RUN_ROT := Vector3(deg_to_rad(17.4), deg_to_rad(229.6), deg_to_rad(-23.0))
 
-const RELOAD_POS := Vector3(-0.33, -1.09, -1.22)
+const RELOAD_POS := Vector3(-0.33, -1.09, -0.22)
 const RELOAD_ROT := Vector3(deg_to_rad(39.3), deg_to_rad(210.6), deg_to_rad(-23.0))
 
 @onready var rifle := $GUIGunOverlay/GunOverlay/Camera3D/Rifle
@@ -165,7 +165,7 @@ func try_shoot() -> bool:
 		rifle.position = rifle_target_pos
 		rifle.position.z += random.randf_range(0.1, 0.2)
 		rifle.rotation = rifle_target_rot
-		rifle.rotation.x -= random.randf_range(0.02, 0.05)
+		rifle.rotation.x -= random.randf_range(0.1, 0.2)
 		
 		animation_thread.start(shoot_animation)
 	
