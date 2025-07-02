@@ -9,3 +9,11 @@ Music: https://www.beepbox.co/#9n31sbk0l01e0bt2ma7g0fj07r1i0o131T6v1ub8f0q0x10p7
 "\[Fun is\] the degrees to which the game recognizes and responded to the players’ choices and actions" — Gabe Newell
 
 mapping tools :0 map where you are bounced down a predetermined path by bouncers and you have to hit targets while airborne
+
+ingame mapping scene that can export to a serialized map file, WHICH YOU USE TO MAKE THE MAIN CAMPAIGN! comes with a bunch of premade assets
+
+```
+m_crate 0.0 2.0 3.0 180.0 45.0 0.0
+m_key_red 100.0 50.0 50.0 0.0 0.0 0.0
+...
+```
