@@ -127,13 +127,18 @@ func try_shoot() -> bool:
 	
 	busy = true
 	
+	rifle_target_pos = SHOOT_POS
+	rifle_target_rot = SHOOT_ROT
+	
+	rifle.position = rifle_target_pos
+	rifle.rotation = rifle_target_rot
+	
 	if animation_thread:
 		animation_thread.wait_to_finish()
 	animation_thread = Thread.new()
 	
 	if clip_ammo > 0:
 		
-		$AudioGunshot.play()
 		clip_ammo -= 1
 		update_ammo_gui()
 		
@@ -144,14 +149,10 @@ func try_shoot() -> bool:
 		rifle_flare.visible = true
 		rifle_flare.rotation.z = random.randf_range(0.0, 0.3)
 		
-		rifle_target_pos = SHOOT_POS
-		rifle_target_rot = SHOOT_ROT
-		
-		rifle.position = rifle_target_pos
 		rifle.position.z += random.randf_range(0.1, 0.2)
-		rifle.rotation = rifle_target_rot
 		rifle.rotation.x -= random.randf_range(0.05, 0.1)
 		
+		$AudioGunshot.play()
 		animation_thread.start(shoot_animation)
 	
 	else:
