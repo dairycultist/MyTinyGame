@@ -42,6 +42,8 @@ subpixel_positioning = 0
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_2hs0m")
+ground_accel = 30
+air_accel = 3
 
 [node name="GUIGunOverlay" type="SubViewportContainer" parent="."]
 anchors_preset = 15
