@@ -19,3 +19,5 @@ m_crate 0.0 2.0 3.0 180.0 45.0 0.0
 m_key_red 100.0 50.0 50.0 0.0 0.0 0.0
 ...
 ```
+
+like CoD zombies where you run through a premade, linear map, with predetermined events/enemies, but when you defeat enemies you get money, which can be used to purchase upgrades at set locations, and the upgrades are random (e.g. "faster firerate" "more health" "vampirism" "explosive round (but slower firerate!)")
